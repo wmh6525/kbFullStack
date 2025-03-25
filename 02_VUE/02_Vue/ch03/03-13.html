@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>03-13</title>
+  </head>
+  <body>
+    <div id="app">
+      <select id="regions">
+        <option disabled="disabled" selected>지역을 선택하세요</option>
+        <option v-for="(val, name) in regions" v-bind:value="name" :key="name">
+          {{val}}
+        </option>
+      </select>
+      <!--v-bind: 와 : 는 같다-->
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            regions: {
+              A: 'Asia',
+              B: 'America',
+              C: 'Europe',
+              D: 'Africa',
+              E: 'Oceania',
+            },
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

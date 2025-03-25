@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04-10</title>
+  </head>
+  <body>
+    <div id="app">
+      1보다 큰수 : <input id="a" type="text" v-model.number="num" />
+      <br />
+      1부터 입력한 값까지의 합 : <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합 : <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합 : <span>{{sum}}</span><br />
+      <hr />
+      <div ref="d">{{sum}}</div>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { num: 0 };
+        },
+        created() {
+          // Dom 접근 불가
+          console.log(this.$refs.d); // Dom 참조 변수들
+          console.log('## 1. created');
+        },
+        mounted() {
+          // Dom 접근 가능
+          console.log('## 3. mounted');
+          console.log(this.$refs.d);
+        },
+        updated() {
+          console.log('## 4. updated');
+        },
+        computed: {
+          sum() {
+            console.log('## 2. computed');
+            console.log(this.$refs.d);
+            var n = parseInt(this.num);
+            if (Number.isNaN(n)) return 0;
+            return (n * (n + 1)) / 2;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

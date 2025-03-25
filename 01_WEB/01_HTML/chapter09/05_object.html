@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let person = {
+        name: '우명훈',
+        address: '송파구',
+        gender: '남자',
+        point: 4,
+        print: function () {
+          console.log(this.name + ':' + this.address + ':' + this.point);
+        },
+      };
+      console.log(person.name);
+      person.print();
+
+      //   이미제공되는 객체:
+      //   window : 최상위 객체로 생략 가능 window.alert() 대신 alert()
+      let time = 3000; //ms 단위 3초
+      window.setTimeout(function () {
+        // 3초후
+        console.log(new Date());
+      }, time);
+
+      window.setInterval(function () {
+        // 3초마다
+        console.log(new Date());
+      }, time);
+
+      // 3초후에 나오게 되어있으므로 그 이전에 먼저 나온 것들을 출력함.
+      // 비동기 처리의 예시 setInterval, setTimeout
+      console.log('one');
+      console.log('two');
+      console.log('three');
+      // document:
+      // loaction:
+      // history:
+    </script>
+  </head>
+  <body></body>
+</html>

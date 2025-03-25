@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>06-10</title>
+  <style>
+    .score {
+      border: solid 1px black;
+    }
+
+    .warning {
+      background-color: skyblue;
+      color: purple;
+    }
+
+    .warnimage {
+      width: 18px;
+      height: 18px;
+      top: 5px;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <p>1부터 100까지만 입력가능합니다.(computed 사용)</p>
+      <div>
+        computed점수 : <input type="text" class="score" v-model.number="scoreComputed" :class="infoComputed" />
+        <img src="https://contactsvc.bmaster.kro.kr/img/error.png" class="warnimage" v-if="infoComputed.warning"
+          title="1부터 100까지만 입력하세요." />
+      </div>
+    </div>
+    <div>
+      <p>1부터 100까지만 입력가능합니다.(methods 사용: v-bind:class에 함수가 바인딩되면, 렌더링 될 때마다 호출,methods점수는 안바뀌고 computed점수만 바뀌어 렌더링될 때도
+        호출 )</p>
+      <div>
+        methods점수 : <input type="text" class="score" v-model.number="scoreMethods" :class="infoMethods()" />
+        <img src="https://contactsvc.bmaster.kro.kr/img/error.png" class="warnimage" v-if="infoMethods().warning"
+          title="1부터 100까지만 입력하세요." />
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue"></script>
+  <script type="text/javascript">
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return { scoreComputed: 50, scoreMethods: 50 };
+      },
+      computed: {
+        infoComputed() {
+          console.log("computed는 미리 한번 또는 모델값이 변화될 때만 호출됨")
+          return { warning: this.scoreComputed < 1 || this.scoreComputed > 100 };
+        },
+      },
+      methods: {
+        infoMethods() {
+          console.log("methods는 호출됨")
+          return { warning: this.scoreMethods < 1 || this.scoreMethods > 100 };
+        },
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

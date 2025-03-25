@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // window에서 load이벤트는 모든 dom구조가 완성되었을 때 발생한다.
+      let init = function () {
+        alert('third');
+        const bt1 = document.querySelector('div>button');
+        bt1.addEventListener('click', function () {
+          //   alert('버튼이 클릭되었습니다.');
+          if (pObj.style.display == 'none') {
+            pObj.style.display = 'block';
+            pObj.style.backgroundColor = 'yellow'; //background-color
+          } else {
+            pObj.style.display = 'none';
+          }
+        });
+
+        bt1.innerText = 'JS버튼';
+        const textObj = document.querySelector('form>input[type=text]');
+        textObj.value = 'hello';
+
+        const pObj = document.querySelector('p');
+        console.log(pObj.innerHTML);
+        pObj.innerHTML = '<a href="#">구글</a><br><a href="#">네이버</a>';
+
+        // DOM 트링서 input객체 중 type 속성이 checkbox인 객체들 찾기
+        const checkboxList = document.querySelectorAll('input[type=checkbox]');
+        // checkboxList.forEach(function (cObj, index) {
+        //   cObj.addEventListener('click', function () {
+        //     console.log(cObj.checked);
+        //   });
+        // });
+        for (let i = 0; i < checkboxList.length; i++) {
+          let cObj = checkboxList[i];
+          cObj.addEventListener('click', function () {
+            console.log(cObj.checked);
+          });
+        }
+      };
+      //   이벤트 처리 방법을 팀원들과 같이정해야 함.
+      //   addEventListener(발생하는 이벤트종류, 함수)
+
+      window.addEventListener('load', init);
+      alert('first');
+    </script>
+  </head>
+  <body>
+    <div><button>버튼</button></div>
+    <form>
+      <input type="text" />
+      <input type="checkbox" />ONE&nbsp;&nbsp;<input
+        type="checkbox"
+      />TWO&nbsp;&nbsp;<input type="checkbox" />THREE&nbsp;&nbsp;
+    </form>
+    <p>단락1</p>
+    <script>
+      alert('second');
+    </script>
+  </body>
+</html>
+<!-- script를 맨 처음 작성할 때는 객체가 다 완성될 때까지 기다리는 코드 필수 -->

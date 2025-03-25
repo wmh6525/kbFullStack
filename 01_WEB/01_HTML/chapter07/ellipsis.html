@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        width: 200px;
+      }
+      .ellipsis {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      /* white-space : nowrap 을 이용해서 줄바꿈을 없애야 줄일 수 있다. */
+    </style>
+  </head>
+  <body>
+    <h1 class="ellipsis">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </h1>
+    <p class="ellipsis">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+  </body>
+</html>

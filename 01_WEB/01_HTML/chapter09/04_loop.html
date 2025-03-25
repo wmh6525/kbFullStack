@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>loop</title>
+    <script>
+      //   for (let i = 0; i < 10; i++) {
+      //     console.log(i, 'KB');
+      //   }
+
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 5, 4, 3, 2, 4, 5, 1];
+      //   for (let i = 0; i < arr.length; i++) {
+      //     console.log(i, arr[i]);
+      //   }
+
+      //   for (let index in arr) {
+      //     console.log(index);
+      //   }
+      //   for (let value of arr) {
+      //     console.log(value);
+      //   }
+
+      //   let obj = { a: 1, b: 'hello' };
+      //   for (const property in obj) {
+      //     console.log(property);
+      //     console.log(obj[property]);
+      //   }
+
+      //   arr.forEach(function (value, index) {
+      //     console.log(index, value);
+      //   });
+
+      console.log('----arr 배열에 저장된 요소들의 출현 횟수를 출력하시오.----');
+      // arr 배열에 저장된 요소들의 출현 횟수를 출력하시오.
+
+      let newArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+      for (let value of arr) {
+        newArr[value - 1] += 1;
+      }
+      for (let i in newArr) {
+        console.log(Number(i) + 1 + '의 출현횟수 : ' + newArr[i]);
+      }
+      // 끝
+
+      // 년도에 해당하는 동물을 출력하시오
+      // ex) 2025년 뱀
+      // 년도를 12로 나눈 나머지가 0 이면 원숭이 1 닭 2 개 3 돼지
+      //            4 쥐 5 소 6 호랑이 7 토끼 8 용 9 뱀 10 말 11 양
+
+      let year = 2025;
+      let zodiac = '';
+      switch (year % 12) {
+        case 0:
+          zodiac = '원숭이';
+          break;
+        case 1:
+          zodiac = '닭';
+          break;
+        case 2:
+          zodiac = '개';
+          break;
+        case 3:
+          zodiac = '돼지';
+          break;
+        case 4:
+          zodiac = '쥐';
+          break;
+        case 5:
+          zodiac = '소';
+          break;
+        case 6:
+          zodiac = '호랑이';
+          break;
+        case 7:
+          zodiac = '토끼';
+          break;
+        case 8:
+          zodiac = '용';
+          break;
+        case 9:
+          zodiac = '뱀';
+          break;
+        case 10:
+          zodiac = '말';
+          break;
+        case 11:
+          zodiac = '양';
+          break;
+      }
+      console.log(zodiac);
+      // 배열로 바꾸어 풀어보시오.
+
+      let narr = [
+        '원숭이',
+        '닭',
+        '개',
+        '돼지',
+        '쥐',
+        '소',
+        '호랑이',
+        '토끼',
+        '용',
+        '뱀',
+        '말',
+        '양',
+      ];
+
+      console.log(narr[year % 12]);
+    </script>
+  </head>
+  <body></body>
+</html>

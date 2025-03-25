@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 외부 CSS파일 사용 -->
+    <link rel="stylesheet" href="basic.css" />
+
+    <!-- inner style -->
+    <style>
+      * {
+        font-style: italic;
+      }
+      h1 {
+        border: 3px solid;
+        width: 100px;
+        color: red; /* 위에서 아래로 렌더링 하므로 각 스타일을 쌓아간다. 같은 스타일에 대해서 중복된 입력값이 들어올 때 가장 최근에 들어온 스타일 값으로 표현한다.*/
+      }
+      /* #을 추가를 하면 해당 id에 스타일을 반영하라, .을 추가하면 해당 클래스에 스타일을 반영하라는 뜻. */
+      #hid1 {
+        height: 400px;
+        color: brown;
+      }
+
+      .c1 {
+        font-size: 3em; /* ed : 기존 크기에 비례해서 증가 3 => 3배 크게 */
+        color: skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- inline style -->
+    <h1 style="text-decoration: underline; color: blueviolet">첫번째 제목</h1>
+    <div>DIV영역</div>
+    <h1 id="hid1" class="c1">두번째 제목</h1>
+    <div class="c1">DIV영역</div>
+  </body>
+</html>
+<!-- class 보다 id 속성이 더 중요하게 들어간다. 즉, id 속성의 우선순위가 가장 높다. -->

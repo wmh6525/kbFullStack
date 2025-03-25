@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품 목록</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="table">
+        <!-- 상품 갯수 만큼 div 요소 만들기 : hint v-for key 사용-->
+        <div
+          v-for="p in products"
+          :key="p.prodNo"
+          :class="`td ${p.prodNo}`"
+          @click="clickProduct"
+        >
+          <ul>
+            <li>
+              <img :src="`./images/${p.prodNo}.jpg`" :alt="p.prodName" />
+            </li>
+            <li>{{p.prodName}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script>
+      const vm = Vue.createApp({
+        // 옵션 객체
+
+        data() {
+          return {
+            // return은 무조건 객체형태로 해야함
+            products: [],
+          };
+        },
+
+        async mounted() {
+          this.products = await this.requestProducts();
+          console.log(this.products);
+        },
+        methods: {
+          requestProducts() {
+            let url = 'http://localhost:3000/product';
+            return fetch(url).then((res) => {
+              return res.json();
+            });
+          },
+          clickProduct() {
+            // this
+            // event.target => div 객체
+            // event.currentTarget => img
+            const prodNo = event.currentTarget
+              .getAttribute('class')
+              .split(' ')[1]; //TODO
+            console.log(prodNo);
+            location.href = './product.html?prodNo=' + prodNo;
+          },
+        },
+      });
+      vm.mount('#app');
+    </script>
+  </body>
+</html>

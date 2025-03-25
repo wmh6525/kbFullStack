@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form
+      autocomplete="off"
+      method="post"
+      action="http://www.naver.com"
+      enctype="multipart/form-data"
+    >
+      <input type="text" placeholder="이름을 입력하세요" />&nbsp;&nbsp;&nbsp;
+      <input type="password" name="p" value="p1" /> &nbsp;&nbsp;
+
+      <input type="checkbox" name="c" value="c1" />ONE&nbsp;&nbsp;
+      <input type="checkbox" name="c" value="c2" checked />TWO &nbsp;&nbsp;
+      <input type="checkbox" name="c" value="c3" checked />THREE
+      <br />
+
+      <input type="radio" name="r" value="r1" />ONE&nbsp;&nbsp;
+      <input type="radio" name="r" value="r2" checked />TWO&nbsp;&nbsp;
+      <input type="radio" name="r" value="r3" />THREE
+      <br />
+
+      <input type="hidden" name="h" value="h1" />
+      <br />
+
+      <input type="file" name="f1" />
+      <!-- file 전송할 때는 enctype 을 multipart/form-data로 변경해야한다. -->
+      <hr />
+      <label for="d">날짜</label> :
+      <input id="d" type="date" required />
+      <label for="n">숫자</label> :
+      <input id="n" type="number" min="1" max="10" name="n" value="5" />
+      <input type="email" name="e" value="abc" />
+      <!-- 전송시 유효성 검정을 해줌 -->
+      <input type="tel" />
+      <input type="range" />
+      <!-- date 와 같은 html 5 부터 사용할 수 있는 type이 바뀌었다. -->
+      <!-- required 를 적으면 적지 않으면 제출이 되지 않음. -->
+
+      <hr />
+
+      <select name="s">
+        <option value="s1">ONE</option>
+        <option value="s2">TWO</option>
+        <option value="s3" selected>THREE</option>
+      </select>
+
+      <textarea rows="4" cols="10" name="ta">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      </textarea>
+
+      <hr />
+
+      <input type="submit" value="전송1" />
+      <button>전송2</button>
+      <button type="submit">전송3</button>
+
+      <hr />
+      <input type="button" value="일반 버튼1" />
+      <button type="button">일반 버튼2</button>
+    </form>
+    form 외부 <br />
+    <button>일반 버튼3</button>
+  </body>
+</html>
+
+<!-- 각 줄은 요소 => 요소는 <시작태그> 바디 </끝태그> 로 이루어짐. -->
+
+<!-- name 속성을 사용하면 데이터를 전송하고자 
+ 할 때 name=value 로 전송을 할 수 있다. 
+ 즉, name 이 없으면 데이터를 전송할 수 없다 -->
+
+<!-- form 태그내부의 button 태그는 type='submit'이 된다. -->

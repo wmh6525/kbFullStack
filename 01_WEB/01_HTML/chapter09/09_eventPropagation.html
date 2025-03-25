@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.addEventListener('load', function () {
+        let divObj = document.querySelector('div');
+        let aObj = document.querySelector('div>a');
+
+        // --divObj 객체가 클릭되면 할 일 START --
+        divObj.addEventListener('click', function () {
+          divObj.style.backgroundColor = 'yellow';
+        });
+        // --divObj 객체가 클릭되면 할 일 END --
+
+        // --<a>태그용 객체에는 클릭용 기본 이벤트 핸들러가 있다.
+        // --aObj 객체가 클릭되면 할 일 START --
+        aObj.addEventListener('click', function () {
+          aObj.innerHTML = '링크 없앰';
+          event.preventDefault(); //기본 이벤트 핸들러 처리 안함.
+          event.stopPropagation(); // 이벤트 전파 중지
+        });
+        // --aObj 객체가 클릭되면 할 일 END --
+        // 자식에서 일어난 이벤트가 부모 노드에도 영향을 미친다.
+      });
+    </script>
+  </head>
+  <body>
+    <div
+      style="
+        background-color: gray;
+        height: 300px;
+        width: 200px;
+        border: solid 1px;
+      "
+    >
+      <a href="http://www.naver.com">링크</a>
+    </div>
+  </body>
+</html>

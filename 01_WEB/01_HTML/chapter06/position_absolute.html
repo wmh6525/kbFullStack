@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS3 Position Property</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+      }
+      .box:nth-child(1) {
+        background-color: red;
+        left: 10px;
+        top: 10px;
+        z-index: 100;
+      }
+      .box:nth-child(2) {
+        background-color: green;
+        left: 50px;
+        top: 50px;
+        z-index: 50;
+      }
+      .box:nth-child(3) {
+        background-color: blue;
+        left: 90px;
+        top: 90px;
+        z-index: 10;
+      }
+      /* #container {
+        position: relative;
+      } */
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+    <h1>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
+      praesentium eius neque dolor delectus explicabo nemo quas mollitia. Ipsum
+      deleniti modi similique incidunt dicta praesentium id, velit doloribus ut
+      obcaecati!
+    </h1>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+/* 선택자 { 프로퍼티명 : 프로퍼티 값; } */
+h1 {
+  color: blue;
+  background-color: beige;
+}

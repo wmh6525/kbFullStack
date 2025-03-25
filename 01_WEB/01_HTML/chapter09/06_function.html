@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // var로 선ㅅ언한 변수에 포함된 함수는 window객체의 함수가 된다.
+      var a = function () {
+        alert('함수1');
+        console.log(this);
+      };
+      //   a(); //함수호출
+      window.a();
+
+      //   let으로 선언한 변수에 포함된 함수는 window객체의 함수가 아니다.
+      let b = function () {
+        alert('함수2');
+        console.log(this);
+      };
+      b();
+
+      let c = () => {
+        alert('함수3');
+        console.log(this);
+      };
+      c();
+
+      let d = function (p1, p2) {
+        console.log('매개변수 p1= ' + p1 + ', p2= ' + p2);
+      };
+      d(1, 'hello');
+
+      let e = d(1, 'hello');
+      console.log(e); // 반환값이 없는 경우 undefined로 출력됨.
+
+      console.log('함수의 매개변수로 전달되는 함수를 callback함수라고 한다.');
+      console.log('--callback함수 test--');
+      let f = function (p1, p2, p3) {
+        p1(p2, p3);
+      };
+      let num = 1;
+      let greeting = 'hello';
+      f(d, num, greeting);
+      f(
+        (p1, p2) => {
+          console.log('매개변수 p1= ' + p1 + ', p2= ' + p2);
+          console.log(this);
+        },
+        1,
+        'hello'
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,92 @@
+<script>
+export default {
+  name: 'Login',
+  data() {
+    return {
+      // 데이터(Model)
+      // id: 'id99',
+      // pwd: 'pwd99',
+      saveId: true,
+      customer: {
+        id: 'id99',
+        pwd: 'pwd99',
+      },
+    };
+  },
+  methods: {
+    clickLoginButton() {
+      alert('button클릭됨');
+    },
+    async submitForm() {
+      alert('form서브밋됨');
+      console.log(this.id, this.pwd, this.saveId);
+      // event.preventDefault(); //디폴트 이벤트 처리 안되게 하기
+
+      const url = 'http://localhost:3000/login';
+      const params = new URLSearchParams();
+
+      params.append('id', this.customer.id);
+      params.append('pwd', this.customer.pwd);
+      console.log(params);
+
+      // XMLHttpRequest객체를 활용을 해야 했으나 fetch함수로 대체
+      const requestInit = {
+        method: 'post',
+        body: params,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      };
+      // then 사용할때
+      // try {
+      //   const responseData = await fetch(url, requstInit) //요청하기
+      //     .then((res) => {
+      //       // 응답받기
+      //       const responseDataPromise = res.text(); //응답내용을 문자열로 얻기
+      //       return responseDataPromise;
+      //     });
+      //   alert(responseData);
+      // } catch (err) {
+      //   alert(err.message);
+      // }
+
+      // then 사용 안할때
+      try {
+        const res = await fetch(url, requestInit);
+        const responseData = await res.text();
+
+        alert(responseData);
+      } catch (err) {
+        alert(err.message);
+      }
+    },
+  },
+};
+</script>
+<template>
+  <form @submit.prevent="submitForm">
+    <!-- <form method="post" action="http://localhost:3000/login"> -->
+    <!-- json 파일로 보내고 싶을때는 자바 스크립트로 직접 이벤트 핸들러를 사용해서
+         보내야 한다. form 태그를 이용해서 보낼 수 있는 데이터 타입은 세가지 밖에 없음 -->
+    <input
+      type="text"
+      v-model="customer.id"
+      placeholder="아이디를 입력하세요"
+      name="id"
+    /><br />
+    <input
+      type="password"
+      v-model="customer.pwd"
+      placeholder="비밀번호를 입력하세요"
+      name="pwd"
+    /><br />
+    <input type="checkbox" v-model="saveId" />아이디저장<br />
+    <button @click="clickLoginButton">로그인</button>
+    <!-- 버튼이 클릭되면 
+         1. 버튼의 click이벤트 발생  => 사용자 정의 이벤트 핸들러 처리
+         2. 폼의 submit이벤트 발생 => 사용자 정의 이벤트 핸들러 처리
+         3. 폼의 기본 이벤트 핸들러가 처리됨 
+         (default 핸들러가 하는일 : 폼의 action 속성 값에 해당하는 URL로 입력값들 전송
+         action 속성값이 없으면 현재 사용 중인 URL로 입력값을 전송)-->
+  </form>
+</template>

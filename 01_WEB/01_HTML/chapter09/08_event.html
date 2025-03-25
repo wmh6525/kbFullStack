@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .change2 {
+        display: none; /*영역도 사라짐 */
+        /* visibility: hidden; 영역은 남아있음 */
+      }
+    </style>
+    <script>
+      // DOM트리가 완성될때까지 기다려! DOM트리가 완성되면 window객체의 load 이벤트가 발생한다.
+      window.addEventListener('load', function () {
+        //DOM트리에서 class 속성값이 click 인 객체 찾기
+        let clickDivObj = document.querySelector('.click');
+        //DOM트리에서 class 속성값이 click의 자식인 button 객체 찾기
+        let btObj = document.querySelector('.click > button');
+        // let btObj = clickDivObj.querySelector('button') 위의 경우와 같은결과
+
+        // btObj 객체에서 click 이벤트가 발생했을 때 할 일 START --
+        btObj.addEventListener('click', function () {
+          alert('클릭되었습니다.');
+        });
+        // btObj 객체에서 click 이벤트가 발생했을 때 할 일 END --
+
+        // DOM트리에서 select객체 찾기
+        let selectObj = document.querySelector('.change > select');
+        // --selectObj 객체에서 click 이벤트가 발생했을 때 할 일 START--
+        selectObj.addEventListener('click', function () {
+          console.log('select박스가 클릭되었습니다.');
+        });
+        // --selectObj 객체에서 click 이벤트가 발생했을 때 할 일 END--
+        let change2Obj = document.querySelector('.change2');
+        // --selectObj 객체에서 change 이벤트가 발생했을 때 할 일 START--
+        selectObj.addEventListener('change', function () {
+          console.log(`select박스값이 ${selectObj.value}으로 바뀌었습니다.`);
+          if (selectObj.value == 'sed') {
+            change2Obj.style.display = 'block';
+            let select2Obj = change2Obj.querySelector('select');
+            //#################################################################
+            // innerHTML 을 이용할 때
+            // select2Obj.innerHTML = '';
+            // select2Obj.innerHTML += '<option>아반테</option>';
+            // select2Obj.innerHTML += '<option>소나타</option>';
+            // select2Obj.innerHTML += '<option>그랜저</option>';
+
+            //#################################################################
+            // node를 찾아가는 방법 1. 객체를 생성하고 , 2. 트리에 끼워넣는다.
+            // removeChild() // 트리에 추가된 객체 제거
+            while (select2Obj.firstChild) {
+              select2Obj.removeChild(select20bj.firstChild);
+            } // 맨앞 자식 요소 제거 하나도 안남을때 까지
+
+            let optionObj = document.createElement('option');
+            let textObj = document.createTextNode('아반테');
+            optionObj.appendChild(textObj);
+            select2Obj.appendChild(optionObj);
+            // #################################################################
+          } else if (selectObj.value == 'suv') {
+            change2Obj.style.display = 'block';
+            let select2Obj = change2Obj.querySelector('select');
+            select2Obj.innerHTML = '';
+            select2Obj.innerHTML += '<option>소렌토</option>';
+            select2Obj.innerHTML += '<option>투싼</option>';
+            select2Obj.innerHTML += '<option>스포티지</option>';
+          } else {
+            change2Obj.style.display = 'none';
+          }
+        });
+        // --selectObj 객체에서 change 이벤트가 발생했을 때 할 일 END--
+
+        //
+      });
+    </script>
+  </head>
+  <body>
+    <div class="click">
+      <button>클릭하세요</button>
+    </div>
+    <div class="change">
+      <select>
+        <option value="">유형을 선택하세요</option>
+        <option value="sed">SEDAN</option>
+        <option value="suv">SUV</option>
+      </select>
+    </div>
+    <div class="change2">
+      <select></select>
+    </div>
+  </body>
+</html>
