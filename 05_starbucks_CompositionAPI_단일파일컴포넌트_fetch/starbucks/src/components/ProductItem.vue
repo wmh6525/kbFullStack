@@ -1,4 +1,32 @@
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
+import { defineProps } from 'vue';
+
+// props 정의
+const props = defineProps({
+  childProduct: {
+    type: Object,
+    required: true,
+  },
+});
+
+// 반응형 변수 선언
+const imageSrc = ref('');
+
+// 이미지 로드 로직
+onMounted(async () => {
+  try {
+    const image = await import(
+      `@/assets/images/${props.childProduct.prodNo}.jpg`
+    );
+    imageSrc.value = image.default;
+    console.log('Image loaded', imageSrc.value);
+  } catch (error) {
+    console.error('Error loading image:', error);
+  }
+});
+</script>
+<!-- <script>
 export default {
   name: "ProductItem",
   props: ["childProduct"],
@@ -18,7 +46,7 @@ export default {
     };
   },
 };
-</script>
+</script> -->
 <template>
   <div :class="`td ${childProduct.prodNo}`">
     <ul>

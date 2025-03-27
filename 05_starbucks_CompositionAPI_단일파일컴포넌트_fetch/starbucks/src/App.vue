@@ -1,13 +1,9 @@
-<script>
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
-import Products from "@/components/Products.vue";
-import Signup from "@/components/Signup.vue";
-import Login from "@/components/Login.vue";
-export default {
-  name: "App",
-  components: { Header, Footer, Products, Signup, Login },
-};
+<script setup>
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+import Products from '@/components/Products.vue';
+import Signup from '@/components/Signup.vue';
+import Login from '@/components/Login.vue';
 </script>
 
 <template>
